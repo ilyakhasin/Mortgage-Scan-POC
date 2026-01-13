@@ -5,6 +5,7 @@ Run with: python test_parser.py
 """
 
 import sys
+import traceback
 
 
 def test_imports():
@@ -198,7 +199,6 @@ def test_extraction_with_mock_data():
         
     except Exception as e:
         print(f"✗ Error testing extraction: {e}")
-        import traceback
         traceback.print_exc()
         return False
 

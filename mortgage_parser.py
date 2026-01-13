@@ -8,6 +8,7 @@ APR, terms, property address, and dates.
 
 import os
 import json
+import re
 from typing import Dict, Optional, Any
 from veryfi import Client
 
@@ -149,7 +150,6 @@ class MortgageStatementParser:
         text = response.get('ocr_text', '').lower()
         
         # Look for APR patterns in text
-        import re
         apr_patterns = [
             r'apr[:\s]+(\d+\.?\d*)\s*%?',
             r'annual percentage rate[:\s]+(\d+\.?\d*)\s*%?',
@@ -178,7 +178,6 @@ class MortgageStatementParser:
         """Extract loan terms (e.g., '30 years', '15 years') from the response."""
         text = response.get('ocr_text', '').lower()
         
-        import re
         # Look for term patterns
         term_patterns = [
             r'(\d+)\s*year\s*(?:fixed|term|loan)?',
@@ -211,7 +210,6 @@ class MortgageStatementParser:
         
         # Look in OCR text for address patterns
         text = response.get('ocr_text', '')
-        import re
         # Simple address pattern (can be enhanced)
         address_pattern = r'property(?:\s+address)?[:\s]+([^\n]+(?:\n[^\n]+)?)'
         match = re.search(address_pattern, text.lower())
@@ -231,7 +229,6 @@ class MortgageStatementParser:
         
         # Look for additional dates in OCR text
         text = response.get('ocr_text', '').lower()
-        import re
         
         # Payment date pattern
         payment_match = re.search(r'payment date[:\s]+(\d{1,2}[-/]\d{1,2}[-/]\d{2,4})', text)
