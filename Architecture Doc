@@ -1,0 +1,26 @@
+Architectural Document
+
+**Project Name:** MortgageData-PoC 2026  
+**Primary Goal:** To validate the feasibility of mobile-based mortgage document extraction using off-the-shelf IDP (Intelligent Document Processing) solutions.
+
+
+#### A. System Components
+1.  **Capture Layer (Client-Side):** Uses **Veryfi Lens SDK** for React Native. This component provides the native camera interface, handling image quality checks (blur/lighting) and auto-cropping locally to ensure optimal OCR results.
+2.  **Extraction Layer (Cloud AI):** Captured images are sent via an encrypted HTTPS request to the **Veryfi Bank Statement API**. The API returns a JSON object containing structured mortgage fields.
+3.  **State Management:** React **Context API** or **Zustand** manages the "Extracted Data State" across the scanning and form-filling screens.
+4.  **UI/UX Layer:** Built with **Tailwind CSS (NativeWind)** for a responsive, modern form interface that allows users to override AI-extracted values.
+
+#### B. Data Flow
+1.  **Trigger:** User initiates scan; `VeryfiLens.showCamera()` is called.
+2.  **Capture:** The SDK captures the image and returns a base64 or file path.
+3.  **Processing:** The app sends the payload to the extraction endpoint.
+4.  **Mapping:** The JSON response is mapped to the React Native form state:
+    *   `total_amount` → `loan_balance`
+    *   `vendor_address` → `property_address`
+    *   `due_date` → `next_payment_date`
+5.  **Review:** User modifies data in the form and saves it to a local SQLite/WatermelonDB instance.
+
+#### C. Performance & Security (2026 Standards)
+*   **Architecture:** Implemented with **TurboModules** for zero-copy frame processing, ensuring the camera UI runs at a consistent 60 FPS.
+
+*   **Privacy:** All data is encrypted in transit using TLS 1.3. No raw document images are stored on the device post-processing unless the user opts into a "local vault" feature.
