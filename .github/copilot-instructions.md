@@ -13,7 +13,7 @@ This is a proof-of-concept Python application that scans and parses mortgage sta
   - `veryfi==3.3.2` - Veryfi SDK for OCR processing
   - `python-dotenv==1.0.0` - Environment variable management
 - **API Integration:** Veryfi Bank Statement API
-- **Planned Mobile Integration:** React Native with Veryfi Lens SDK (per architecture doc)
+- **Planned Mobile Integration:** React Native with Veryfi Lens SDK (per Architecture Doc)
 
 ## Project Structure
 
