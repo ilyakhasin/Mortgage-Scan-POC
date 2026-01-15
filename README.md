@@ -53,8 +53,8 @@ pip install -r requirements.txt
 ```
 
 This will install:
-- `veryfi==3.3.2` - Veryfi SDK for OCR processing
-- `python-dotenv==1.0.0` - Environment variable management
+- `veryfi` - Veryfi SDK for OCR processing (v3.3.0 or higher)
+- `python-dotenv` - Environment variable management (v1.0.0 or higher)
 
 ### 3. Set Up API Credentials
 
