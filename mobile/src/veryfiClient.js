@@ -27,7 +27,6 @@ export async function uploadDocument(base64Image) {
       method: 'POST',
       headers: {
         'Authorization': `apikey ${VERYFI_API_KEY}`,
-        'Content-Type': 'multipart/form-data',
       },
       body: formData,
     });
@@ -91,11 +90,11 @@ export function mapFields(veryfiResponse) {
     },
     {
       label: 'Current principal balance',
-      value: getValue(custom_fields, 'principal_balance', total ? `$${total.toFixed(2)}` : 'N/A'),
+      value: getValue(custom_fields, 'principal_balance', 'N/A'),
     },
     {
       label: 'Interest rate',
-      value: getValue(custom_fields, 'interest_rate', getValue(veryfiResponse, 'tax')),
+      value: getValue(custom_fields, 'interest_rate', 'N/A'),
     },
     {
       label: 'Monthly payment',
