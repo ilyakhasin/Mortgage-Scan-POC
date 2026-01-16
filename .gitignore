@@ -45,3 +45,43 @@ test_images/
 # OS
 .DS_Store
 Thumbs.db
+
+# React Native / Expo
+node_modules/
+.expo/
+.expo-shared/
+npm-debug.*
+*.jks
+*.p8
+*.p12
+*.key
+*.mobileprovision
+*.orig.*
+web-build/
+dist/
+
+# Android
+mobile/android/
+*.apk
+*.aab
+.gradle/
+local.properties
+
+# iOS
+mobile/ios/
+*.pbxuser
+!default.pbxuser
+*.mode1v3
+!default.mode1v3
+*.mode2v3
+!default.mode2v3
+*.perspectivev3
+!default.perspectivev3
+xcuserdata
+*.xccheckout
+*.moved-aside
+DerivedData
+*.hmap
+*.ipa
+*.xcuserstate
+project.xcworkspace
